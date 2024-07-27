@@ -15,6 +15,7 @@ spec:
       containers:
         - name: auth
           image: pk/auth
+          imagePullPolicy: Never
 ---
 apiVersion: v1
 kind: Service
