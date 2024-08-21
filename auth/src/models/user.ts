@@ -30,7 +30,19 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   }
+}, {
+  toJSON: {
+    transform(doc, ret){
+
+      ret.id = ret._id;
+
+      delete ret.password;
+      delete ret.__v;
+      delete ret._id;
+    }
+  }
 });
+
 userSchema.statics.build = (attrs: UserAttrs) => {
   return new User(attrs);
 };
